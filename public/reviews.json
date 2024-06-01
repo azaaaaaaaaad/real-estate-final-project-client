@@ -1,0 +1,38 @@
+[
+    {
+        "reviewer_name": "John Smith",
+        "reviewer_image": "https://i.ibb.co/phjzT84/download.jpg",
+        "review_description": "Great property, amazing location!",
+        "property_title": "Beautiful Beachfront Villa"
+    },
+    {
+        "reviewer_name": "Emily Johnson",
+        "reviewer_image": "https://i.ibb.co/CH0TQ3h/b2c175cdd5d8eee0f7f9503d7ec1ed5a.jpg",
+        "review_description": "Absolutely loved our stay. The property exceeded our expectations.",
+        "property_title": "Cozy Mountain Cabin"
+    },
+    {
+        "reviewer_name": "Michael Brown",
+        "reviewer_image": "https://i.ibb.co/n7RffdS/Johnson-Michael-D.jpg",
+        "review_description": "The property was nice, but could use some improvements.",
+        "property_title": "Luxurious City Penthouse"
+    },
+    {
+        "reviewer_name": "Sarah Wilson",
+        "reviewer_image": "https://i.ibb.co/bJx2MyY/images.jpg",
+        "review_description": "Incredible experience! The property was perfect for our family vacation.",
+        "property_title": "Charming Countryside Cottage"
+    },
+    {
+        "reviewer_name": "David Jones",
+        "reviewer_image": "https://i.ibb.co/Hn7JMP8/download.jpg",
+        "review_description": "Spacious and modern apartment with stunning views.",
+        "property_title": "Modern City Apartment"
+    },
+    {
+        "reviewer_name": "Emma Lee",
+        "reviewer_image": "https://i.ibb.co/WGn6VB3/download.jpg",
+        "review_description": "An unforgettable stay in this beautiful historic mansion.",
+        "property_title": "Historic Mansion"
+    }
+]

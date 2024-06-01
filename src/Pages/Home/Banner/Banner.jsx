@@ -8,7 +8,16 @@ import img3 from '../../../assets/3.webp'
 const Banner = () => {
     return (
         <div>
-             <Carousel>
+             <Carousel autoPlay={1}>
+                <div>
+                    <img src={img1} />
+                </div>
+                <div>
+                    <img src={img2} />
+                </div>
+                <div>
+                    <img src={img3} />
+                </div>
                 <div>
                     <img src={img1} />
                 </div>
