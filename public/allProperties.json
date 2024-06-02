@@ -1,0 +1,112 @@
+[
+    {
+        "image": "https://i.ibb.co/54Qh5J1/download.jpg",
+        "title": "Luxurious Beachfront Villa",
+        "location": "Malibu, California",
+        "agent": {
+            "name": "John Doe",
+            "image": "https://i.ibb.co/phjzT84/download.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$5,000,000 - $7,000,000"
+    },
+    {
+        "image": "https://i.ibb.co/ZVMpwHM/Contemporary-Mountain-Home-Dennis-Zirbel-01-1-Kindesign.jpg",
+        "title": "Cozy Mountain Cabin",
+        "location": "Aspen, Colorado",
+        "agent": {
+            "name": "Jane Smith",
+            "image": "https://i.ibb.co/CH0TQ3h/b2c175cdd5d8eee0f7f9503d7ec1ed5a.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$800,000 - $1,200,000"
+    },
+    {
+        "image": "https://i.ibb.co/FDcZTd2/download.jpg",
+        "title": "Downtown Loft",
+        "location": "New York City, New York",
+        "agent": {
+            "name": "Michael Johnson",
+            "image": "https://i.ibb.co/n7RffdS/Johnson-Michael-D.jpg"
+        },
+        "verification_status": "Not Verified",
+        "price_range": "$1,500,000 - $2,000,000"
+    },
+    {
+        "image": "https://i.ibb.co/MGTDr93/download.jpg",
+        "title": "Ranch Retreat",
+        "location": "Bozeman, Montana",
+        "agent": {
+            "name": "Emily Brown",
+            "image": "https://i.ibb.co/bJx2MyY/images.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$3,000,000 - $4,000,000"
+    },
+    {
+        "image": "https://i.ibb.co/zSJ9cVQ/download.jpg",
+        "title": "Modern City Apartment",
+        "location": "San Francisco, California",
+        "agent": {
+            "name": "Daniel Wilson",
+            "image": "https://i.ibb.co/Hn7JMP8/download.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$1,200,000 - $1,800,000"
+    },
+    {
+        "image": "https://i.ibb.co/ZB2gcjC/images.jpg",
+        "title": "Lakefront Retreat",
+        "location": "Lake Tahoe, Nevada",
+        "agent": {
+            "name": "Samantha Martinez",
+            "image": "https://i.ibb.co/q0nG20V/images.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$2,500,000 - $3,500,000"
+    },
+    {
+        "image": "https://i.ibb.co/DVHF2Cw/download.jpg",
+        "title": "Historic Mansion",
+        "location": "Charleston, South Carolina",
+        "agent": {
+            "name": "David Lee",
+            "image": "https://i.ibb.co/Hn7JMP8/download.jpg"
+        },
+        "verification_status": "Not Verified",
+        "price_range": "$6,000,000 - $8,000,000"
+    },
+    {
+        "image": "https://i.ibb.co/pwdmNrx/download.jpg",
+        "title": "Ski Chalet",
+        "location": "Whistler, British Columbia",
+        "agent": {
+            "name": "Jessica Taylor",
+            "image": "https://i.ibb.co/B2Jbx8t/download.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$4,500,000 - $6,000,000"
+    },
+    {
+        "image": "https://i.ibb.co/qmyMvt2/images.jpg",
+        "title": "Seaside Cottage",
+        "location": "Cape Cod, Massachusetts",
+        "agent": {
+            "name": "Ryan Anderson",
+            "image": "https://i.ibb.co/Cmgzvjc/images.jpg"
+        },
+        "verification_status": "Verified",
+        "price_range": "$900,000 - $1,300,000"
+    },
+    {
+        "image": "https://i.ibb.co/pygFWxn/download.jpg",
+        "title": "Urban Penthouse",
+        "location": "Chicago, Illinois",
+        "agent": {
+            "name": "Sarah White",
+            "image": "https://i.ibb.co/tHz3TVh/download.jpg"
+        },
+        "verification_status": "Not Verified",
+        "price_range": "$2,000,000 - $2,500,000"
+    }
+]

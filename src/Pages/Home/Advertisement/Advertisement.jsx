@@ -6,7 +6,7 @@ const Advertisement = () => {
 
     const [advertisement, setAdvertisement] = useState([])
     useEffect(() => {
-        fetch(`advertisement.json`)
+        fetch(`http://localhost:5000/advertisement`)
             .then(res => res.json())
             .then(data => {
                 const verifiedItems = data.filter(item => item.verification_status === 'verified')

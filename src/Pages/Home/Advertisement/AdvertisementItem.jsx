@@ -15,7 +15,7 @@ const AdvertisementItem = ({ item }) => {
                     <p className="flex items-center gap-4"><FaMapLocation /> {location.city}, {location.state}</p>
                     <p className="flex items-center gap-2"><GoVerified /> {verification_status}</p>
                     <div className="card-actions">
-                        <Link ><button className="btn btn-outline btn-black">Details</button></Link>
+                        <Link to={`/details`}><button className="btn btn-outline btn-black">Details</button></Link>
                     </div>
                 </div>
             </div>

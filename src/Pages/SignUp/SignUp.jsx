@@ -75,9 +75,9 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-blue-600 w-full rounded-md py-3 text-white'
             >
-              Continue
+              Signup
             </button>
           </div>
         </form>
@@ -91,7 +91,7 @@ const SignUp = () => {
         <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
           <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
+          <p> Google</p>
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
           Already have an account?{' '}
