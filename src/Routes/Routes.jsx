@@ -3,6 +3,8 @@ import {
 } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
+import AllProperties from "../Pages/AllProperties/AllProperties";
+
 
 
 export const router = createBrowserRouter([
@@ -13,6 +15,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/allProperties',
+                element: <AllProperties></AllProperties>
             }
         ]
     },
