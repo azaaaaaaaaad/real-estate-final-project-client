@@ -3,7 +3,7 @@ import { GoVerified } from "react-icons/go";
 import { Link } from "react-router-dom";
 
 const AdvertisementItem = ({ item }) => {
-    const { image, title, location, price_range, verification_status } = item;
+    const {_id, image, title, location, price_range, verification_status } = item;
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -15,7 +15,7 @@ const AdvertisementItem = ({ item }) => {
                     <p className="flex items-center gap-4"><FaMapLocation /> {location.city}, {location.state}</p>
                     <p className="flex items-center gap-2"><GoVerified /> {verification_status}</p>
                     <div className="card-actions">
-                        <Link to={`/details`}><button className="btn btn-outline btn-black">Details</button></Link>
+                        <Link to={`/advertisement/${_id}`}><button className="btn btn-outline btn-black">Details</button></Link>
                     </div>
                 </div>
             </div>

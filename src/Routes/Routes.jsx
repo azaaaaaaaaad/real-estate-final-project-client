@@ -4,11 +4,11 @@ import {
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import AllProperties from "../Pages/AllProperties/AllProperties";
-import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import ErrorPage from '../Pages/ErrorPage/ErrorPage'
 import Login from "../Pages/Login/Login";
 import SignUp from '../Pages/SignUp/SignUp'
 import PrivateRoute from "./PrivateRoute";
+import AdvertisementDetails from "../Pages/DetailsPage/AdvertisementDetails";
 
 
 
@@ -24,11 +24,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allProperties',
-                element: <PrivateRoute><AllProperties></AllProperties></PrivateRoute>
+                element: <AllProperties></AllProperties>
             },
             {
-                path: '/details',
-                element: <DetailsPage></DetailsPage>
+                path: '/advertisement/:id',
+                element: <AdvertisementDetails></AdvertisementDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/advertisement/${params.id}`),
             },
 
         ]

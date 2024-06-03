@@ -1,12 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Providers/AuthProvider'
+import { Helmet } from 'react-helmet-async'
 
 const Login = () => {
 
 
-  const {signIn} = useContext(AuthContext)
+  const { signIn } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogin = event => {
     event.preventDefault()
@@ -14,17 +19,21 @@ const Login = () => {
     const email = form.email.value
     const password = form.password.value
 
-    const info = {email, password}
+    const info = { email, password }
     console.log(info);
 
     signIn(email, password)
-    .then(result => {
-      const user = result.user
-      console.log(user);
-    })
+      .then(result => {
+        const user = result.user
+        console.log(user);
+      })
+      navigate(from, {replace: true})
   }
   return (
     <div className='flex justify-center items-center min-h-screen'>
+      <Helmet>
+        <title>Real Estate | Login</title>
+      </Helmet>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Log In</h1>
@@ -33,7 +42,7 @@ const Login = () => {
           </p>
         </div>
         <form
-        onSubmit={handleLogin}
+          onSubmit={handleLogin}
           noValidate=''
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
