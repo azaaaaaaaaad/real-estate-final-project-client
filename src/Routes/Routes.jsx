@@ -9,6 +9,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from '../Pages/SignUp/SignUp'
 import PrivateRoute from "./PrivateRoute";
 import AdvertisementDetails from "../Pages/DetailsPage/AdvertisementDetails";
+import AllPropertiesDetails from "../Pages/DetailsPage/AllPropertiesDetails";
 
 
 
@@ -29,7 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: '/advertisement/:id',
                 element: <AdvertisementDetails></AdvertisementDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/advertisement/${params.id}`),
+            },
+            {
+                path: '/allProperties/:id',
+                element: <AllPropertiesDetails></AllPropertiesDetails>,
             },
 
         ]

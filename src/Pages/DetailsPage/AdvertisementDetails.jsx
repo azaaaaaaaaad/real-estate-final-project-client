@@ -9,8 +9,8 @@ const AdvertisementDetails = () => {
         fetch(`http://localhost:5000/advertisement/${id}`)
             .then(res => res.json())
             .then(data => {
-                // const verifiedItems = data.filter(item => item.verification_status === 'verified')
-                setAdvertisement(data)
+                // // const verifiedItems = data.filter(item => item.verification_status === 'verified')
+                // setAdvertisement(data)
             })
     }, [])
 

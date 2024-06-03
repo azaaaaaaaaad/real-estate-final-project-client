@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const AllPropertiesCard = ({ item }) => {
-    const { image, title, location, agent, verification_status, price_range } = item
+    const {_id, image, title, location, agent, verification_status, price_range } = item
     return (
         <div>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -19,7 +19,7 @@ const AllPropertiesCard = ({ item }) => {
                     <p className="flex items-center gap-2">Status:<GoVerified />{verification_status}</p>
                     <p>Price: {price_range}</p>
                     <div className="card-actions">
-                        <Link to={'/details'}>
+                        <Link to={`/allProperties/${_id}`}>
                             <button className="btn btn-outline btn-black">Details</button>
                         </Link>
                     </div>
