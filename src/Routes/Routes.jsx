@@ -10,6 +10,7 @@ import SignUp from '../Pages/SignUp/SignUp'
 import PrivateRoute from "./PrivateRoute";
 import AdvertisementDetails from "../Pages/DetailsPage/AdvertisementDetails";
 import AllPropertiesDetails from "../Pages/DetailsPage/AllPropertiesDetails";
+import DashboardLayout from "../Layout/DashboardLayout";
 
 
 
@@ -45,5 +46,10 @@ export const router = createBrowserRouter([
     {
         path: '/signup',
         element: <SignUp></SignUp>
+    },
+    {
+        path: '/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [],
     }
 ]);
