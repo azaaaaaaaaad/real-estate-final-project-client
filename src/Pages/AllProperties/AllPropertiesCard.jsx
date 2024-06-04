@@ -14,8 +14,8 @@ const AllPropertiesCard = ({ item }) => {
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{title}</h2>
                     <p className="flex items-center gap-4"><FaMapLocation /> {location}</p>
-                    <img src={agent.image} className="w-24 rounded-lg" />
-                    <p>Agent: {agent.name}</p>
+                    <img src={agent?.image} className="w-24 rounded-lg" />
+                    <p>Agent: {agent?.name}</p>
                     <p className="flex items-center gap-2">Status:<GoVerified />{verification_status}</p>
                     <p>Price: {price_range}</p>
                     <div className="card-actions">

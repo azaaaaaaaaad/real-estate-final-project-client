@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../Providers/AuthProvider'
-import { FaHome, FaList} from "react-icons/fa";
-import { FaUser, FaUserGraduate } from 'react-icons/fa6'
+import { FaMoneyBillTransfer, FaUser } from 'react-icons/fa6'
+import { MdAddHomeWork, MdOutlineBroadcastOnHome } from 'react-icons/md'
+import { RiHomeGearFill } from 'react-icons/ri'
 
 const Sidebar = () => {
     const { logOut } = useContext(AuthContext)
@@ -54,40 +54,65 @@ const Sidebar = () => {
                         <nav>
                             {/* Statistics */}
                             <NavLink
-                                to='wishlist'
+                                to='/dashboard'
+                                end
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
                                     }`
                                 }
                             >
-                                <FaList  className='w-5 h-5' />
+                                <FaUser  className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>Wishlist</span>
+                                <span className='mx-4 font-medium'>Agent Profile</span>
                             </NavLink>
 
                             {/* Add Room */}
                             <NavLink
-                                to='property-bought'
+                                to='add-property'
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
                                     }`
                                 }
                             >
-                                <FaHome  className='w-5 h-5' />
+                                <MdAddHomeWork  className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>Property bought</span>
+                                <span className='mx-4 font-medium'>Add Property</span>
                             </NavLink>
                             {/* My Listing */}
                             <NavLink
-                                to='my-reviews'
+                                to='my-added-properties'
                                 className={({ isActive }) =>
                                     `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
                                     }`
                                 }
                             >
-                                <FaUser className='w-5 h-5' />
+                                <RiHomeGearFill className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>My Reviews</span>
+                                <span className='mx-4 font-medium'>My added properties</span>
+                            </NavLink>
+
+                            <NavLink
+                                to='my-sold-properties'
+                                className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                                    }`
+                                }
+                            >
+                                <FaMoneyBillTransfer className='w-5 h-5' />
+
+                                <span className='mx-4 font-medium'>My sold properties</span>
+                            </NavLink>
+
+                            <NavLink
+                                to='requested-properties'
+                                className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                                    }`
+                                }
+                            >
+                                <MdOutlineBroadcastOnHome className='w-5 h-5' />
+
+                                <span className='mx-4 font-medium'>Requested properties</span>
                             </NavLink>
                         </nav>
                     </div>
@@ -97,7 +122,7 @@ const Sidebar = () => {
                     <hr />
 
                     {/* Profile Menu */}
-                    <NavLink
+                    {/* <NavLink
                         to='/dashboard/profile'
                         className={({ isActive }) =>
                             `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
@@ -107,7 +132,7 @@ const Sidebar = () => {
                         <FaUserGraduate className='w-5 h-5' />
 
                         <span className='mx-4 font-medium'>My Profile</span>
-                    </NavLink>
+                    </NavLink> */}
                     <button
                         onClick={logOut}
                         className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'

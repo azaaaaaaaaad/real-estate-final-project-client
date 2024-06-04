@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { AuthContext } from '../../Providers/AuthProvider'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { imageUpload } from '../../api/utils'
 
 const SignUp = () => {
 
@@ -52,25 +53,19 @@ const SignUp = () => {
         const email = form.email.value
         const password = form.password.value
         const image = form.image.files[0]
-        const formData = new FormData()
-        formData.append('image', image)
 
         try {
             setLoading(true)
             // 1. Upload image and get image url
-            const { data } = await axios.post(
-                `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY
-                }`,
-                formData
-            )
-            console.log(data.data.display_url)
+            const image_url = await imageUpload(image)
+            console.log(image_url);
 
             //2. User Registration
             const result = await createUser(email, password)
             console.log(result)
 
             // 3. Save username and photo in firebase
-            await updateUserProfile(name, data.data.display_url)
+            await updateUserProfile(name, image_url)
             navigate('/')
             toast.success('Signup Successful')
         } catch (err) {

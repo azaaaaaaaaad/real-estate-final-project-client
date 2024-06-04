@@ -11,6 +11,9 @@ import PrivateRoute from "./PrivateRoute";
 import AdvertisementDetails from "../Pages/DetailsPage/AdvertisementDetails";
 import AllPropertiesDetails from "../Pages/DetailsPage/AllPropertiesDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
+import MyProfile from "../Pages/Dashboard/Common/MyProfile";
+import AddProperty from "../Pages/Dashboard/Agent/AddProperty";
+import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
 
 
 
@@ -50,6 +53,19 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
-        children: [],
+        children: [
+            {
+                index: true,
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: 'add-property',
+                element: <AddProperty></AddProperty>
+            },
+            {
+                path: 'my-added-properties',
+                element: <MyAddedProperties></MyAddedProperties>
+            },
+        ],
     }
 ]);
