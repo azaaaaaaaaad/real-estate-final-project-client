@@ -39,7 +39,7 @@ const AddPropertyForm = ({ handleSubmit, setImagePreview, imagePreview, handleIm
                         </div>
 
                         <div className=' p-4 bg-white w-full  m-auto rounded-lg flex justify-between items-center'>
-                            <div className='file_upload px-5 py-3 relative border-4 border-dotted border-blue-500 rounded-lg'>
+                            <div className='file_upload px-5 py-3 relative border-4 border-double border-blue-500 rounded-lg'>
                                 <div className='flex flex-col w-max mx-auto text-center'>
                                     <label>
                                         <input

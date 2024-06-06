@@ -11,11 +11,11 @@ import PrivateRoute from "./PrivateRoute";
 import AdvertisementDetails from "../Pages/DetailsPage/AdvertisementDetails";
 import AllPropertiesDetails from "../Pages/DetailsPage/AllPropertiesDetails";
 import DashboardLayout from "../Layout/DashboardLayout";
-import MyProfile from "../Pages/Dashboard/Common/MyProfile";
 import AddProperty from "../Pages/Dashboard/Agent/AddProperty";
 import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
 import MySoldProperties from "../Pages/Dashboard/Agent/MySoldProperties";
 import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
+import Profile from "../Pages/Dashboard/Common/Profile";
 
 
 
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <MyProfile></MyProfile>
+                element: <Profile></Profile>
             },
             {
                 path: 'add-property',

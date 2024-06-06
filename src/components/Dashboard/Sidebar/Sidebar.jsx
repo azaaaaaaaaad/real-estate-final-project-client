@@ -9,6 +9,9 @@ import { MdAddHomeWork, MdOutlineBroadcastOnHome } from 'react-icons/md'
 import { RiHomeGearFill } from 'react-icons/ri'
 import useRole from '../../../Pages/Hooks/useRole'
 import MenuItem from './Menu/MenuItem'
+import AgentMenu from './Menu/AgentMenu'
+import UserMenu from './Menu/UserMenu'
+import AdminMenu from './Menu/AdminMenu'
 
 const Sidebar = () => {
     const { logOut } = useContext(AuthContext)
@@ -57,41 +60,17 @@ const Sidebar = () => {
                         {/*  Menu Items */}
                         <nav>
                             {/* profile */}
-                            <MenuItem label='Agent Profile' address='/dashboard' icon={FaUser}></MenuItem>
+                            <MenuItem label=' Profile' address='/dashboard' icon={FaUser}></MenuItem>
 
-
-                            {/* Add Property */}
-                            <MenuItem label='Add Property' address='/dashboard/add-property' icon={MdAddHomeWork}></MenuItem>
-
-
-                            {/* My added properties */}
-                            <MenuItem label='My added properties' address='/dashboard/my-added-properties' icon={RiHomeGearFill}></MenuItem>
-
-                            {/* my-sold-properties*/}
-                            <MenuItem label='My sold properties' address='/dashboard/my-sold-properties' icon={FaMoneyBillTransfer}></MenuItem>
-
-                            {/* requested-properties*/}
-                            <MenuItem label='Requested properties' address='/dashboard/requested-properties' icon={MdOutlineBroadcastOnHome}></MenuItem>
-
+                            {role === 'user' && <UserMenu/>}
+                            {role === 'agent' && <AgentMenu/>}
+                            {role === 'admin' && <AdminMenu/>}
                         </nav>
                     </div>
                 </div>
 
                 <div>
                     <hr />
-
-                    {/* Profile Menu */}
-                    {/* <NavLink
-                        to='/dashboard/profile'
-                        className={({ isActive }) =>
-                            `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                            }`
-                        }
-                    >
-                        <FaUserGraduate className='w-5 h-5' />
-
-                        <span className='mx-4 font-medium'>My Profile</span>
-                    </NavLink> */}
                     <button
                         onClick={logOut}
                         className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
