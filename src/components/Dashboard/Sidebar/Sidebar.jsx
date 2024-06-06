@@ -7,10 +7,13 @@ import { AuthContext } from '../../../Providers/AuthProvider'
 import { FaMoneyBillTransfer, FaUser } from 'react-icons/fa6'
 import { MdAddHomeWork, MdOutlineBroadcastOnHome } from 'react-icons/md'
 import { RiHomeGearFill } from 'react-icons/ri'
+import useRole from '../../../Pages/Hooks/useRole'
 
 const Sidebar = () => {
     const { logOut } = useContext(AuthContext)
     const [isActive, setActive] = useState(false)
+    const [role] = useRole()
+    console.log(role);
 
     // Sidebar Responsive Handler
     const handleToggle = () => {

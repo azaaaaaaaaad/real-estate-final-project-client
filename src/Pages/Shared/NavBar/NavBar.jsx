@@ -1,16 +1,51 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import AgentRequestModal from "../../../components/Modal/AgentRequestModal";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 
 const NavBar = () => {
-
+    const axiosSecure = useAxiosSecure()
     const { user, logOut } = useContext(AuthContext)
+    const [isOpen, setIsOpen] = useState(false)
+
+    //for modal
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const closeModal = () => {
+        setIsModalOpen(false)
+    }
+
+    const modalHandler = async () => {
+        console.log('i want to be an agent');
+        try {
+            const currentUser = {
+                email: user?.email,
+                role: 'user',
+                status: 'Requested',
+            }
+            const { data } = await axiosSecure.put(
+                `/user`,
+                currentUser)
+            console.log(data);
+            if (data.modifiedCount > 0) {
+                toast.success('success! please wait for admin confirmation')
+            } else {
+                toast.success('Please!, wait for admin approval')
+            }
+        } catch (err) {
+            console.log(err);
+            toast.error(err.message)
+        }finally{
+            closeModal()
+        }
+    }
 
     const handleLogout = () => {
         logOut()
-        .then(()=> {})
-        .catch( error=> console.log(error))
+            .then(() => { })
+            .catch(error => console.log(error))
     }
 
     const navOptions = <>
@@ -40,6 +75,20 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    {/* Become A Host btn */}
+                    <div className='hidden md:block'>
+                        {/* {!user && ( */}
+                        <button
+                            // disabled={!user}
+                            onClick={() => setIsModalOpen(true)}
+                            className='disabled:cursor-not-allowed cursor-pointer hover:bg-neutral-100 py-3 px-4 text-sm font-semibold rounded-full  transition'
+                        >
+                            Host your home
+                        </button>
+                        {/* )} */}
+                    </div>
+                    {/* agent modal */}
+                    <AgentRequestModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler}></AgentRequestModal>
                     {
                         user ? <><button onClick={handleLogout} className="btn btn-ghost">LogOut</button></> : <><Link to={'/login'} className="btn">Login</Link></>
                     }

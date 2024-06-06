@@ -3,7 +3,7 @@ import { FaMapLocationDot, FaUser } from "react-icons/fa6";
 import DeleteModal from "../../../components/Modal/DeleteModal";
 
 
-const MyAddedPropertiesCard = ({ property, refetch, handleDelete }) => {
+const MyAddedPropertiesCard = ({ property, handleDelete }) => {
     let [isOpen, setIsOpen] = useState(false)
     const  closeModal = () => {
         setIsOpen(false)
@@ -26,7 +26,7 @@ const MyAddedPropertiesCard = ({ property, refetch, handleDelete }) => {
                     <button className="btn join-item bg-blue-500">Verify</button>
                     <button className="btn join-item bg-green-500">Update</button>
                     <button onClick={()=> setIsOpen(true)} className="btn join-item bg-red-500">Delete</button>
-                    <DeleteModal isOpen={isOpen} closeModal={closeModal}></DeleteModal>
+                    <DeleteModal isOpen={isOpen} closeModal={closeModal} handleDelete={handleDelete} id={property._id}></DeleteModal>
                 </div>
             </div>
         </div>
