@@ -8,6 +8,7 @@ import { FaMoneyBillTransfer, FaUser } from 'react-icons/fa6'
 import { MdAddHomeWork, MdOutlineBroadcastOnHome } from 'react-icons/md'
 import { RiHomeGearFill } from 'react-icons/ri'
 import useRole from '../../../Pages/Hooks/useRole'
+import MenuItem from './Menu/MenuItem'
 
 const Sidebar = () => {
     const { logOut } = useContext(AuthContext)
@@ -25,7 +26,7 @@ const Sidebar = () => {
             <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
-                    <Link to={'/'} className="btn btn-ghost text-xl font-semibold">Real Estate</Link>
+                        <Link to={'/'} className="btn btn-ghost text-xl font-semibold">Real Estate</Link>
                     </div>
                 </div>
 
@@ -45,7 +46,7 @@ const Sidebar = () => {
                 <div>
                     <div>
                         <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-blue-700 text-white mx-auto'>
-                        <Link to={'/'} className="btn btn-ghost text-xl font-semibold">Real Estate</Link>
+                            <Link to={'/'} className="btn btn-ghost text-xl font-semibold">Real Estate</Link>
                         </div>
                     </div>
 
@@ -55,68 +56,23 @@ const Sidebar = () => {
 
                         {/*  Menu Items */}
                         <nav>
-                            {/* Statistics */}
-                            <NavLink
-                                to='/dashboard'
-                                end
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <FaUser  className='w-5 h-5' />
+                            {/* profile */}
+                            <MenuItem label='Agent Profile' address='/dashboard' icon={FaUser}></MenuItem>
 
-                                <span className='mx-4 font-medium'>Agent Profile</span>
-                            </NavLink>
 
-                            {/* Add Room */}
-                            <NavLink
-                                to='add-property'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <MdAddHomeWork  className='w-5 h-5' />
+                            {/* Add Property */}
+                            <MenuItem label='Add Property' address='/dashboard/add-property' icon={MdAddHomeWork}></MenuItem>
 
-                                <span className='mx-4 font-medium'>Add Property</span>
-                            </NavLink>
-                            {/* My Listing */}
-                            <NavLink
-                                to='my-added-properties'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <RiHomeGearFill className='w-5 h-5' />
 
-                                <span className='mx-4 font-medium'>My added properties</span>
-                            </NavLink>
+                            {/* My added properties */}
+                            <MenuItem label='My added properties' address='/dashboard/my-added-properties' icon={RiHomeGearFill}></MenuItem>
 
-                            <NavLink
-                                to='my-sold-properties'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <FaMoneyBillTransfer className='w-5 h-5' />
+                            {/* my-sold-properties*/}
+                            <MenuItem label='My sold properties' address='/dashboard/my-sold-properties' icon={FaMoneyBillTransfer}></MenuItem>
 
-                                <span className='mx-4 font-medium'>My sold properties</span>
-                            </NavLink>
+                            {/* requested-properties*/}
+                            <MenuItem label='Requested properties' address='/dashboard/requested-properties' icon={MdOutlineBroadcastOnHome}></MenuItem>
 
-                            <NavLink
-                                to='requested-properties'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <MdOutlineBroadcastOnHome className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>Requested properties</span>
-                            </NavLink>
                         </nav>
                     </div>
                 </div>

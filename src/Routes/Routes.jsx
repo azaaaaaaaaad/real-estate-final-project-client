@@ -14,6 +14,8 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import MyProfile from "../Pages/Dashboard/Common/MyProfile";
 import AddProperty from "../Pages/Dashboard/Agent/AddProperty";
 import MyAddedProperties from "../Pages/Dashboard/Agent/MyAddedProperties";
+import MySoldProperties from "../Pages/Dashboard/Agent/MySoldProperties";
+import RequestedProperties from "../Pages/Dashboard/Agent/RequestedProperties";
 
 
 
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
             {
                 path: 'my-added-properties',
                 element: <MyAddedProperties></MyAddedProperties>
+            },
+            {
+                path: 'my-sold-properties',
+                element: <MySoldProperties></MySoldProperties>
+            },
+            {
+                path: 'requested-properties',
+                element: <RequestedProperties></RequestedProperties>
             },
         ],
     }
