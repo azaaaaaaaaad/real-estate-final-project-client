@@ -14,15 +14,17 @@ const AllPropertiesDetails = () => {
             })
     }, [])
     return (
-        <div className="card card-side bg-base-100 shadow-xl ">
-            <figure><img src={properties?.image} alt="Movie" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{properties?.title}</h2>
-                <p>{properties?.description}</p>
-                <p>Price Range: {properties?.price_range}</p>
-                <p className='flex items-center gap-2'><FaRegUser />Agent: {properties?.agent?.name}</p>
-                <div className="card-actions justify-center">
-                    <button className="btn btn-primary btn-wide">Add to wishlist</button>
+        <div>
+            <div className="card card-side bg-base-100 shadow-xl ">
+                <figure><img src={properties?.image} alt="Movie" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">{properties?.title}</h2>
+                    <p>{properties?.description}</p>
+                    <p>Price Range: {properties?.price_range}</p>
+                    <p className='flex items-center gap-2'><FaRegUser />Agent: {properties?.agent?.name}</p>
+                    <div className="card-actions justify-center">
+                        <button className="btn btn-primary btn-wide">Add to wishlist</button>
+                    </div>
                 </div>
             </div>
         </div>

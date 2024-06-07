@@ -57,7 +57,7 @@ const NavBar = () => {
 
     return (
         <div>
-            <div className="navbar fixed z-10 bg-opacity-80 max-w-screen-xl mx-auto bg-base-100">
+            <div className="navbar fixed z-20 bg-opacity-20 max-w-screen-xl mx-auto bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,6 +89,9 @@ const NavBar = () => {
                     </div>
                     {/* agent modal */}
                     <AgentRequestModal isOpen={isModalOpen} closeModal={closeModal} modalHandler={modalHandler}></AgentRequestModal>
+
+
+                    
                     {
                         user ? <><button onClick={handleLogout} className="btn btn-ghost">LogOut</button></> : <><Link to={'/login'} className="btn">Login</Link></>
                     }

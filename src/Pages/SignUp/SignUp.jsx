@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Providers/AuthProvider'
-import axios from 'axios'
 import toast from 'react-hot-toast'
 import { imageUpload } from '../../api/utils'
 
@@ -14,37 +13,6 @@ const SignUp = () => {
 
     const { createUser, signInWithGoogle, updateUserProfile, setLoading } = useContext(AuthContext)
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     const form = event.target
-    //     const name = form.name.value
-    //     const email = form.email.value
-    //     const password = form.password.value
-    //     const image = form.image.files
-    //     const info = { name, email, password, image }
-    //     console.log(info);
-
-    //     const formData = new FormData()
-    //     formData.append('image', image)
-
-    //     try {
-    //         const { data } = await axios.post(
-    //             `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`,
-    //             formData
-    //         )
-    //         console.log(data.data.display_url);
-
-    //         //user reg
-    //         const result = await createUser(email,password)
-    //         console.log(result);
-
-    //         //save user datas in firebase
-    //         await updateUserProfile(name, data.data.display_url)
-    //         navigate('/')
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -103,7 +71,7 @@ const SignUp = () => {
                 >
                     <div className='space-y-4'>
                         <div>
-                            <label htmlFor='email' className='block mb-2 text-sm'>
+                            <label htmlFor='name' className='block mb-2 text-sm'>
                                 Name
                             </label>
                             <input
@@ -111,7 +79,7 @@ const SignUp = () => {
                                 name='name'
                                 id='name'
                                 placeholder='Enter Your Name Here'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                         </div>
@@ -137,7 +105,7 @@ const SignUp = () => {
                                 id='email'
                                 required
                                 placeholder='Enter Your Email Here'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
                             />
                         </div>
@@ -154,7 +122,7 @@ const SignUp = () => {
                                 id='password'
                                 required
                                 placeholder='*******'
-                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
                             />
                         </div>
                     </div>
@@ -186,7 +154,7 @@ const SignUp = () => {
                     Already have an account?{' '}
                     <Link
                         to='/login'
-                        className='hover:underline hover:text-rose-500 text-gray-600'
+                        className='hover:underline hover:text-blue-500 text-gray-600'
                     >
                         Login
                     </Link>

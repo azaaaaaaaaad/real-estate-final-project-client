@@ -65,6 +65,7 @@ const Sidebar = () => {
                             {role === 'user' && <UserMenu/>}
                             {role === 'agent' && <AgentMenu/>}
                             {role === 'admin' && <AdminMenu/>}
+                            {/* <AdminMenu/> */}
                         </nav>
                     </div>
                 </div>
