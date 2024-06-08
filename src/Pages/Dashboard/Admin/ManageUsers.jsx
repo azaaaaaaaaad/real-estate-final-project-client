@@ -1,24 +1,54 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import UserDataRow from "../../../components/Dashboard/TableRows/UserDataRow";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-    const { user } = useAuth()
-    const axiosSecure = useAxiosSecure()
-    const { data: users = [], isLoading, refetch } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const { data } = await axiosSecure(`/users`)
-            return data
-        },
-    })
-    console.log(users);
-    if (isLoading) {
-        return <span className="loading loading-bars loading-lg"></span>
+  const { user } = useAuth()
+  const axiosSecure = useAxiosSecure()
+  const { data: users = [], isLoading, refetch } = useQuery({
+    queryKey: ['users'],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/users`)
+      return data
     }
+  })
+  console.log(users);
+  if (isLoading) {
+    return <span className="loading loading-bars loading-lg"></span>
+  }
+
+  const handleDelete = id => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/users/${id}`)
+          .then(res => {
+            if (res.data.deletedCount > 0) {
+              refetch()
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+      }
+    });
+  }
+
+
+
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
@@ -60,14 +90,9 @@ const ManageUsers = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Agent
+                      Set role
                     </th>
-                    <th
-                      scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
-                    >
-                      Admin
-                    </th>
+
                     <th
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
@@ -78,15 +103,16 @@ const ManageUsers = () => {
                 </thead>
                 <tbody>
 
-                {
-                    users.map (user=> <UserDataRow
-                    key={user._id}
-                    user={user}
-                    refetch={refetch}
+                  {
+                    users.map(user => <UserDataRow
+                      key={user._id}
+                      user={user}
+                      refetch={refetch}
+                      handleDelete={handleDelete}
                     ></UserDataRow>)
-                }
+                  }
 
-    
+
                 </tbody>
               </table>
             </div>
