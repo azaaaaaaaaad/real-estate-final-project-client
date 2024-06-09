@@ -5,8 +5,6 @@ import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../../Providers/AuthProvider'
 import { FaMoneyBillTransfer, FaUser } from 'react-icons/fa6'
-import { MdAddHomeWork, MdOutlineBroadcastOnHome } from 'react-icons/md'
-import { RiHomeGearFill } from 'react-icons/ri'
 import useRole from '../../../Pages/Hooks/useRole'
 import MenuItem from './Menu/MenuItem'
 import AgentMenu from './Menu/AgentMenu'
@@ -65,7 +63,6 @@ const Sidebar = () => {
                             {role === 'user' && <UserMenu/>}
                             {role === 'agent' && <AgentMenu/>}
                             {role === 'admin' && <AdminMenu/>}
-                            {/* <AdminMenu/> */}
                         </nav>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ import Profile from "../Pages/Dashboard/Common/Profile";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
+import Wishlist from "../Pages/Dashboard/User/Wishlist";
 
 
 
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Profile></Profile>
+            },
+            {
+                path: 'wishlist',
+                element: <Wishlist></Wishlist>
             },
             // agent
             {
