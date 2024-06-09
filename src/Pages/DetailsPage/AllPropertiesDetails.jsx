@@ -26,6 +26,7 @@ const AllPropertiesDetails = () => {
                 email: user.email,
                 image: properties.image,
                 title: properties.title,
+                location: properties.location,
                 agent: {
                     name: properties.agent.name,
                     image: properties.agent.image,
