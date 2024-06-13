@@ -20,6 +20,7 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers";
 import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import Wishlist from "../Pages/Dashboard/User/Wishlist";
+import MakeAnOffer from "../Pages/Dashboard/User/MakeAnOffer";
 
 
 
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: '/allProperties/:id',
                 element: <PrivateRoute><AllPropertiesDetails></AllPropertiesDetails></PrivateRoute>,
+            },
+            {
+                path: `/make-an-offer/:id`,
+                element: <PrivateRoute><MakeAnOffer></MakeAnOffer></PrivateRoute>
             },
 
         ]

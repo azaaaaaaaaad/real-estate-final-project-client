@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const AllPropertiesCard = ({ item }) => {
-    const { _id, image, title, location, agent, verification_status, price_range } = item
+    const { _id, image, title, location, agent, verification_status, priceMin, priceMax } = item
 
     return (
         <div>
@@ -18,7 +18,7 @@ const AllPropertiesCard = ({ item }) => {
                     <img src={agent?.image} className="w-24 rounded-lg" />
                     <p>Agent: {agent?.name}</p>
                     <p className="flex items-center gap-2">Status:<GoVerified />{verification_status}</p>
-                    <p>Price: {price_range}</p>
+                    <p>Price: ${priceMin} - ${priceMax}</p>
                     <div className="card-actions">
                         <Link to={`/allProperties/${_id}`}>
                             <button

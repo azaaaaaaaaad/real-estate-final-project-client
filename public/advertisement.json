@@ -2,121 +2,73 @@
     {
         "image": "https://i.ibb.co/54Qh5J1/download.jpg",
         "title": "Beautiful Beachfront Villa",
-        "location": {
-            "address": "123 Ocean Avenue",
-            "city": "Seaside",
-            "state": "California",
-            "country": "United States",
-            "zipcode": "90210"
-        },
+        "location": "123 Ocean Avenue",
         "agent": {
             "name": "John Doe",
             "image": "https://i.ibb.co/phjzT84/download.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 500000,
-            "max_price": 1000000
-        }
+        "priceMin": 500000,
+        "priceMax": 1000000
     },
     {
         "image": "https://i.ibb.co/ZVMpwHM/Contemporary-Mountain-Home-Dennis-Zirbel-01-1-Kindesign.jpg",
         "title": "Cozy Mountain Cabin",
-        "location": {
-            "address": "456 Pine Road",
-            "city": "Mountainville",
-            "state": "Colorado",
-            "country": "United States",
-            "zipcode": "80401"
-        },
+        "location": "456 Pine Road",
         "agent": {
             "name": "Jane Smith",
             "image": "https://i.ibb.co/CH0TQ3h/b2c175cdd5d8eee0f7f9503d7ec1ed5a.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 300000,
-            "max_price": 600000
-        }
+        "priceMin": 300000,
+        "priceMax": 600000
     },
     {
         "image": "https://i.ibb.co/THr4W1p/luxurious-penthouse-apartment-overlooking-bustling-city-skyline-ai-generated-497837-3942.jpg",
         "title": "Luxurious City Penthouse",
-        "location": {
-            "address": "789 High Street",
-            "city": "Metropolis",
-            "state": "New York",
-            "country": "United States",
-            "zipcode": "10001"
-        },
+        "location": "789 High Street",
         "agent": {
             "name": "Michael Johnson",
             "image": "https://i.ibb.co/n7RffdS/Johnson-Michael-D.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 800000,
-            "max_price": 1500000
-        }
+        "priceMin": 800000,
+        "priceMax": 1500000
     },
     {
         "image": "https://i.ibb.co/Xzb7Srd/images.jpg",
         "title": "Charming Countryside Cottage",
-        "location": {
-            "address": "987 Meadow Lane",
-            "city": "Ruraltown",
-            "state": "Montana",
-            "country": "United States",
-            "zipcode": "59001"
-        },
+        "location": "987 Meadow Lane",
         "agent": {
             "name": "Emily Brown",
             "image": "https://i.ibb.co/bJx2MyY/images.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 200000,
-            "max_price": 400000
-        }
+        "priceMin": 200000,
+        "priceMax": 400000
     },
     {
         "image": "https://i.ibb.co/zSJ9cVQ/download.jpg",
         "title": "Modern City Apartment",
-        "location": {
-            "address": "135 Urban Way",
-            "city": "Downtown",
-            "state": "Illinois",
-            "country": "United States",
-            "zipcode": "60601"
-        },
+        "location": "135 Urban Way",
         "agent": {
             "name": "David Wilson",
             "image": "https://i.ibb.co/Hn7JMP8/download.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 400000,
-            "max_price": 700000
-        }
+        "priceMin": 400000,
+        "priceMax": 700000
     },
     {
         "image": "https://i.ibb.co/DVHF2Cw/download.jpg",
         "title": "Historic Mansion",
-        "location": {
-            "address": "246 Heritage Lane",
-            "city": "Oldtown",
-            "state": "Virginia",
-            "country": "United States",
-            "zipcode": "22181"
-        },
+        "location": "246 Heritage Lane",
         "agent": {
             "name": "Sarah Jones",
             "image": "https://i.ibb.co/WGn6VB3/download.jpg"
         },
         "verification_status": "verified",
-        "price_range": {
-            "min_price": 1000000,
-            "max_price": 2000000
-        }
+        "priceMin": 1000000,
+        "priceMax": 2000000
     }
 ]

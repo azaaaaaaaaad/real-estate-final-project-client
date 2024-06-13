@@ -1,29 +1,73 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import useAuth from '../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const AdvertisementDetails = () => {
     const { id } = useParams()
-    const [advertisement, setAdvertisement] = useState([])
+    const { user } = useAuth()
+    const navigate = useNavigate();
+    const [properties, setProperties] = useState([])
+    const axiosSecure = useAxiosSecure()
     useEffect(() => {
-        fetch(`http://localhost:5000/advertisement/${id}`)
+        fetch(`https://real-state-server-nine.vercel.app/advertisement/${id}`)
             .then(res => res.json())
             .then(data => {
                 // // const verifiedItems = data.filter(item => item.verification_status === 'verified')
-                // setAdvertisement(data)
+                setProperties(data)
             })
     }, [])
 
+
+    const handleAddToWishlist = property => {
+        if (user && user?.email) {
+            const wishlistItem = {
+                propertyId: properties._id,
+                email: user.email,
+                image: properties.image,
+                title: properties.title,
+                location: properties.location,
+                agent: {
+                    name: properties.agent.name,
+                    image: properties.agent.image,
+                },
+                verification_status: properties.verification_status,
+                priceMin: properties.priceMin,
+                priceMax: properties.priceMax
+
+            }
+
+            axiosSecure.post(`/wishlist`, wishlistItem)
+                .then(res => {
+                    console.log(res.data);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${properties.title} added to your wishlist`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate(`/dashboard/wishlist`)
+                })
+        } else {
+
+        }
+    }
+
     return (
         <div className="card card-side bg-base-100 shadow-xl ">
-            <figure><img src={advertisement?.image} alt="Movie" /></figure>
+            <figure><img src={properties?.image} alt="Movie" /></figure>
             <div className="card-body">
-                <h2 className="card-title">{advertisement?.title}</h2>
-                <p>{advertisement?.description}</p>
-                <p>Price Range: ${advertisement?.price_range?.min_price}-${advertisement?.price_range?.max_price}</p>
-                <p className='flex items-center gap-2'><FaRegUser />Agent: {advertisement?.agent?.name}</p>
+                <h2 className="card-title">{properties?.title}</h2>
+                <p>{properties?.description}</p>
+                <p>Price Range: ${properties?.priceMin}-${properties?.priceMax}</p>
+                <p className='flex items-center gap-2'><FaRegUser />Agent: {properties?.agent?.name}</p>
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary btn-wide">Add to wishlist</button>
+                    <button
+                        onClick={() => handleAddToWishlist(properties)}
+                        className="btn btn-primary btn-wide">Add to wishlist</button>
                 </div>
             </div>
         </div>

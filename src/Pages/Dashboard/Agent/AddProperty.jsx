@@ -39,9 +39,13 @@ const AddProperty = () => {
         const title = form.title.value
         const priceMin = form.priceMin.value
         const priceMax = form.priceMax.value
+        // const price_range = {
+        //      min_price : form.priceMin.value,
+        //      max_price : form.priceMax.value
+        // }
         const description = form.description.value
         const image = form.image.files[0]
-        const verification_status = 'Pending'
+        const verification_status = 'Verified'
 
         const agent = {
             name: user?.displayName,
