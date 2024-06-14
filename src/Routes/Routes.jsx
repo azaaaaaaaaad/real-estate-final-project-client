@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import AgentRoute from "./AgentRoute";
 import Wishlist from "../Pages/Dashboard/User/Wishlist";
 import MakeAnOffer from "../Pages/Dashboard/User/MakeAnOffer";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 
