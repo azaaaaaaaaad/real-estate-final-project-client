@@ -22,6 +22,8 @@ import AgentRoute from "./AgentRoute";
 import Wishlist from "../Pages/Dashboard/User/Wishlist";
 import MakeAnOffer from "../Pages/Dashboard/User/MakeAnOffer";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
+import MyReviews from "./MyReviews";
 
 
 
@@ -51,6 +53,10 @@ export const router = createBrowserRouter([
                 path: `/make-an-offer/:id`,
                 element: <PrivateRoute><MakeAnOffer></MakeAnOffer></PrivateRoute>
             },
+            {
+                path: `/payment`,
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>
+            },
 
         ]
     },
@@ -73,6 +79,18 @@ export const router = createBrowserRouter([
             {
                 path: 'wishlist',
                 element: <Wishlist></Wishlist>
+            },
+            {
+                path: `property-bought`,
+                element: <PropertyBought></PropertyBought>
+            },
+            {
+                path: `my-reviews`,
+                element: <MyReviews></MyReviews>
+            },
+            {
+                path: `property-bought`,
+                element: <PropertyBought></PropertyBought>
             },
             // agent
             {

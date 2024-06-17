@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import AddPropertyForm from '../../components/Form/AddPropertyForm';
 
 const AllPropertiesDetails = () => {
     const { id } = useParams()
@@ -72,6 +73,8 @@ const AllPropertiesDetails = () => {
                         </button>
 
                     </div>
+
+                    
                 </div>
             </div>
         </div>

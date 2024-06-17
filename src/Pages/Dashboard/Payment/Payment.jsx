@@ -1,6 +1,7 @@
 
 
-const Payment = () => {
+const Payment = ({ handleOfferSubmit }) => {
+    console.log(handleOfferSubmit);
     return (
         <div>
             Payment

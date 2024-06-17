@@ -1,8 +1,8 @@
 
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
-import { useQuery } from '@tanstack/react-query';
-import { Link, useParams } from 'react-router-dom';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,27 +10,93 @@ import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../Payment/CheckoutForm';
+import toast from 'react-hot-toast';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 const MakeAnOffer = ({ property }) => {
+    const [offerAmount, setOfferAmount] = useState([])
     const [startDate, setStartDate] = useState(new Date());
+    const [loading, setLoading] = useState(false)
     const { id } = useParams();
     const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate();
     const { user } = useAuth()
     const { data: wishlist = [], refetch } = useQuery({
         queryKey: ['wishlist'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/wishlist/${id}`)
-            console.log(res.data);
             return res.data
         }
     })
 
+
+    const {mutateAsync} = useMutation({
+        mutationFn: async (propertyData)=> {
+            const  {data} = await axiosSecure.post(`/offerRequest`, propertyData)
+            return data
+        },
+        // onSuccess: ()=> {
+        //     console.log('data saved successfully')
+        //     toast.success('offer request added successfully')
+        //     navigate('/dashboard/property-bought')
+        //     setLoading(false)
+        // }
+    })
+
+    const handleOfferSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        const form = e.target;
+        const location = form.location.value;
+        const title = form.title.value;
+        const image = wishlist.image
+        const agent = form.agent.value;
+        const offerAmount = parseFloat(form.offerAmount.value)
+        if (offerAmount < parseFloat(wishlist.priceMin)) {
+            return toast.error('offer more or at least equal to minimum price')
+        }
+        if (offerAmount > parseFloat(wishlist.priceMax)) {
+            return toast.error('offer less or equal to maximum price')
+        }
+        const status = 'pending';
+        const buyerName = form.buyerName.value;
+        const buyerEmail = form.buyerEmail.value;
+        const buyingDate = form.buyingDate.value;
+    
+        const propertyData = {
+            location,
+            title,
+            image,
+            agent,
+            offerAmount,
+            status,
+            buyerName,
+            buyerEmail,
+            buyingDate
+        };
+    
+        try {
+            await mutateAsync(propertyData);
+            console.log('data saved successfully');
+            toast.success('Offer request added successfully');
+            navigate('/dashboard/property-bought');
+            setLoading(false);
+        } catch (err) {
+            console.error('Error posting data:', err);
+            toast.error(err.message); // Display only the error message
+            setLoading(false);
+        }
+    };
+
+
+
+
+
     return (
         <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
             <Elements stripe={stripePromise}>
-                <form>
+                <form onSubmit={handleOfferSubmit}>
                     <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                         <div className='space-y-6'>
 
@@ -43,7 +109,8 @@ const MakeAnOffer = ({ property }) => {
                                     name='location'
                                     id='location'
                                     type='text'
-                                    placeholder={wishlist?.location}
+                                    readOnly
+                                    defaultValue={wishlist?.location}
                                 />
                             </div>
                         </div>
@@ -58,8 +125,8 @@ const MakeAnOffer = ({ property }) => {
                                     name='title'
                                     id='title'
                                     type='text'
-                                    placeholder={wishlist?.title}
                                     readOnly
+                                    defaultValue={wishlist?.title}
                                 />
                             </div>
                             <div className='space-y-1 text-sm'>
@@ -71,7 +138,7 @@ const MakeAnOffer = ({ property }) => {
                                     name='agent'
                                     id='agent'
                                     type='text'
-                                    placeholder={wishlist?.agent?.name}
+                                    defaultValue={wishlist?.agent?.name}
                                     readOnly
                                 />
                             </div>
@@ -81,9 +148,9 @@ const MakeAnOffer = ({ property }) => {
                                 </label>
                                 <input
                                     className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md '
-                                    name='OfferAmount'
-                                    id='OfferAmount'
-                                    type='text'
+                                    name='offerAmount'
+                                    id='offerAmount'
+                                    type='number'
                                     placeholder='insert amount'
                                     required
                                 />
@@ -101,7 +168,7 @@ const MakeAnOffer = ({ property }) => {
                                         name='buyerName'
                                         id='buyerName'
                                         type='text'
-                                        placeholder={user?.displayName}
+                                        defaultValue={user?.displayName}
                                         readOnly
                                     />
                                 </div>
@@ -115,7 +182,7 @@ const MakeAnOffer = ({ property }) => {
                                         name='buyerEmail'
                                         id='buyerEmail'
                                         type='email'
-                                        placeholder={user?.email}
+                                        defaultValue={user?.email}
                                         readOnly
                                     />
                                 </div>
@@ -136,15 +203,23 @@ const MakeAnOffer = ({ property }) => {
 
                         </div>
                     </div>
+                    {/* <Link to={'/payment'} > */}
+                        <button
+                        // onClick={handleOfferSubmit}
+                            // disabled
+                            // handleOfferSubmit={handleOfferSubmit}
+                            type='submit'
+                            className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500'
+                        >
+                            Offer Now
+                        </button>
+                    {/* </Link> */}
 
-                    {/* <button
-                        // disabled
-                        type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-blue-500'
-                    >
-                        Offer Now
-                    </button> */}
-                <CheckoutForm></CheckoutForm>
+                    
+                    {/* <CheckoutForm
+                        handleOfferSubmit={handleOfferSubmit}
+                        >
+                    </CheckoutForm> */}
                 </form>
             </Elements>
         </div>
