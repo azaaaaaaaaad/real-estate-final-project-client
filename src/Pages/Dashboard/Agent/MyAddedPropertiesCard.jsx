@@ -19,11 +19,11 @@ const MyAddedPropertiesCard = ({ property, handleDelete }) => {
                     <img className="w-20 h-20 rounded-lg" src={property.agent.image} alt="" />
                 </div>
                 <p>Price Range: ${property?.priceMin}-${property?.priceMax}</p>
+                <p>Status: {property.verification_status}</p>
                 {/* <div className="card-actions justify-end">
                     <button className="btn btn-primary">Watch</button>
                 </div> */}
                 <div className="join join-vertical lg:join-horizontal">
-                    <button className="btn join-item bg-blue-500">Verify</button>
                     <button className="btn join-item bg-green-500">Update</button>
                     <button onClick={()=> setIsOpen(true)} className="btn join-item bg-red-500">Delete</button>
                     <DeleteModal isOpen={isOpen} closeModal={closeModal} handleDelete={handleDelete} id={property._id}></DeleteModal>

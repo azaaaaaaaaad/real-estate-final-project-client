@@ -1,31 +1,32 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
-const RequestedProperties = () => {
+
+const ManageProperties = () => {
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-    const { data: offerRequest = [], refetch } = useQuery({
-        queryKey: ['offerRequest', user?.email],
+    const { data: allProperties = [], refetch } = useQuery({
+        queryKey: ['allProperties'],
         queryFn: async () => {
-            // const res = await axiosSecure.get(`/offerRequest?email=${user?.email}`)
-            const res = await axiosSecure.get(`/offerRequest?email=${user?.email}}`)
+            // const res = await axiosSecure.get(`/allProperties?email=${user?.email}`)
+            const res = await axiosSecure.get(`/allProperties`)
             return res.data
         }
     })
-    console.log(offerRequest);
+    console.log(allProperties);
 
 
-    const handleStatus = async (id, prevStatus, status) => {
-        if (prevStatus === status) {
+    const handleStatus = async (id, prevStatus, verification_status) => {
+        if (prevStatus === verification_status) {
             return console.log('go back');
         }
 
         try {
-            const { data } = await axiosSecure.patch(`/offerRequest/${id}`, { status })
+            const { data } = await axiosSecure.patch(`/property/${id}`, { verification_status })
             refetch()
-            toast.success(`Offer price accepted`)
+            toast.success(`Property accepted`)
             console.log(data)
 
         } catch (err) {
@@ -40,10 +41,10 @@ const RequestedProperties = () => {
     return (
         <section className='container px-4 mx-auto pt-12'>
             <div className='flex items-center gap-x-3'>
-                <h2 className='text-lg font-medium text-gray-800 '>Offer Requests</h2>
+                <h2 className='text-lg font-medium text-gray-800 '>Manage Properties</h2>
 
                 <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-                    {offerRequest.length} Offers
+                    {allProperties.length} Property
                 </span>
             </div>
 
@@ -75,7 +76,7 @@ const RequestedProperties = () => {
                                             className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
                                             <div className='flex items-center gap-x-3'>
-                                                <span>Buyer Email</span>
+                                                <span>Agent Name</span>
                                             </div>
                                         </th>
                                         <th
@@ -83,17 +84,16 @@ const RequestedProperties = () => {
                                             className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
                                             <div className='flex items-center gap-x-3'>
-                                                <span>Buyer Name</span>
+                                                <span>Agent Email</span>
                                             </div>
                                         </th>
-
                                         <th
                                             scope='col'
-                                            className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                            className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
-                                            <button className='flex items-center gap-x-2'>
-                                                <span>Offered Price</span>
-                                            </button>
+                                            <div className='flex items-center gap-x-3'>
+                                                <span>Price Range</span>
+                                            </div>
                                         </th>
 
                                         <th
@@ -109,41 +109,42 @@ const RequestedProperties = () => {
                                     </tr>
                                 </thead>
                                 <tbody className='bg-white divide-y divide-gray-200 '>
-                                    {offerRequest.map(offerRequest => (
-                                        <tr key={offerRequest._id}>
+                                    {allProperties.map(allProperties => (
+                                        <tr key={allProperties._id}>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {offerRequest.title}
+                                                {allProperties.title}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {offerRequest.location}
+                                                {allProperties.location}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {offerRequest.buyerEmail}
+                                                {allProperties.agent.name}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {offerRequest.buyerName}
+                                                {allProperties.agent.email}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                ${offerRequest.offerAmount}
+                                                ${allProperties.priceMin} - ${allProperties.priceMax}
                                             </td>
 
+                                           
                                             <td className='px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap'>
                                                 <div
-                                                    className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${offerRequest.status === 'pending' &&
+                                                    className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${allProperties.verification_status === 'Pending' &&
                                                         'bg-yellow-100/60 text-yellow-500'
-                                                        }  ${offerRequest.status === 'accepted' &&
+                                                        }  ${allProperties.verification_status === 'Verified' &&
                                                         'bg-emerald-100/60 text-emerald-500'
-                                                        } ${offerRequest.status === 'rejected' &&
+                                                        } ${allProperties.verification_status === 'Rejected' &&
                                                         'bg-red-100/60 text-red-500'
                                                         } `}
                                                 >
                                                     <span
-                                                        className={`h-1.5 w-1.5 rounded-full ${offerRequest.status === 'pending' && 'bg-yellow-500'
+                                                        className={`h-1.5 w-1.5 rounded-full ${allProperties.verification_status === 'Pending' && 'bg-yellow-500'
                                                             } 
-                              } ${offerRequest.status === 'accepted' && 'bg-green-500'} ${offerRequest.status === 'rejected' && 'bg-red-500'
+                              } ${allProperties.verification_status === 'Verified' && 'bg-green-500'} ${allProperties.verification_status === 'Rejected' && 'bg-red-500'
                                                             }  `}
                                                     ></span>
-                                                    <h2 className='text-sm font-normal '>{offerRequest?.status}</h2>
+                                                    <h2 className='text-sm font-normal '>{allProperties?.verification_status}</h2>
                                                 </div>
                                             </td>
                                             <td className='px-4 py-4 text-sm whitespace-nowrap'>
@@ -151,9 +152,9 @@ const RequestedProperties = () => {
                                                     {/* Accept Button: In Progress */}
                                                     <button
                                                         onClick={() =>
-                                                            handleStatus(offerRequest._id, offerRequest.status, 'accepted')
+                                                            handleStatus(allProperties._id, allProperties.verification_status, 'Verified')
                                                         }
-                                                        disabled={offerRequest.status === 'accepted'}
+                                                        disabled={allProperties.verification_status === 'Verified'}
                                                         className='disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                                                     >
                                                         <svg
@@ -176,9 +177,9 @@ const RequestedProperties = () => {
                                                     {/* Reject Button */}
                                                     <button
                                                         onClick={() =>
-                                                            handleStatus(offerRequest._id, offerRequest.status, 'rejected')
+                                                            handleStatus(allProperties._id, allProperties.verification_status, 'Rejected')
                                                         }
-                                                        disabled={offerRequest.status === 'accepted'}
+                                                        disabled={allProperties.verification_status === 'Verified'}
                                                         className='disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-yellow-500 focus:outline-none'
                                                     >
                                                         <svg
@@ -210,4 +211,4 @@ const RequestedProperties = () => {
     );
 };
 
-export default RequestedProperties;
+export default ManageProperties;

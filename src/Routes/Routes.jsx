@@ -24,6 +24,7 @@ import MakeAnOffer from "../Pages/Dashboard/User/MakeAnOffer";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
 import MyReviews from "./MyReviews";
+import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 
 
 
@@ -136,6 +137,15 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <AdminRoute>
                             <ManageUsers></ManageUsers>
+                        </AdminRoute>
+                    </PrivateRoute>
+            },
+            {
+                path: 'manage-properties',
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <ManageProperties></ManageProperties>
                         </AdminRoute>
                     </PrivateRoute>
             },

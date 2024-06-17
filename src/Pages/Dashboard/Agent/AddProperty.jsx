@@ -42,7 +42,7 @@ const AddProperty = () => {
         
         const description = form.description.value
         const image = form.image.files[0]
-        const verification_status = 'Verified'
+        const verification_status = 'Pending'
 
         const agent = {
             name: user?.displayName,

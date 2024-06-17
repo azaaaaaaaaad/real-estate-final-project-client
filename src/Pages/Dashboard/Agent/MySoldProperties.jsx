@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
 
 
 const MySoldProperties = () => {
-
+    const {user} = useAuth()
     const axiosSecure = useAxiosSecure()
     const { data: soldProperties = [], isLoading, refetch } = useQuery({
         queryKey: ['soldProperties'],
@@ -23,7 +24,7 @@ const MySoldProperties = () => {
                 <h2 className='text-lg font-medium text-gray-800 '>Sold Properties</h2>
 
                 <span className='px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full '>
-                    {soldProperties.length} Sold
+                    {soldProperties.length} Property Sold by {user.displayName}
                 </span>
             </div>
 
