@@ -3,6 +3,8 @@ import Banner from './Banner/Banner';
 import Advertisement from './Advertisement/Advertisement';
 import Review from './Review/Review';
 import { Helmet } from 'react-helmet-async';
+import SectionOne from './SectionOne/SectionOne';
+import SectionTwo from './SectionTwo/SectionTwo';
 
 const Home = () => {
     return (
@@ -14,6 +16,8 @@ const Home = () => {
             <Banner></Banner>
             <Advertisement></Advertisement>
             <Review></Review>
+            <SectionOne></SectionOne>
+            <SectionTwo></SectionTwo>
         </div>
     );
 };

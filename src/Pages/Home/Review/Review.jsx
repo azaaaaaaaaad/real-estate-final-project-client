@@ -15,21 +15,7 @@ import { data } from 'autoprefixer';
 
 
 const Review = () => {
-    // const axiosSecure = useAxiosSecure()
     const [reviews, setReviews] = useState([])
-    // const [loading, setLoading] = useState(false)
-    
-    // const {data, isLoading} = useQuery({
-    //     queryKey: ['reviews'],
-    //     queryFn: async() => {
-    //         const {data} = await axiosSecure.get('/reviews')
-    //         return data
-    //     },
-    // })
-
-    // console.log(data);
-
-    // if (isLoading) return <span className="loading loading-bars loading-lg"></span>
 
 
     useEffect(() => {
@@ -50,14 +36,12 @@ const Review = () => {
                     >
                         <div className='my-2'>
                             <div className="card bg-base-100">
-                                <figure><img className='rounded-xl' src={review.reviewer_image} alt="Movie" /></figure>
+                                <figure><img className='rounded-xl w-20 h-20' src={review.image} alt="Movie" /></figure>
                                 <div className="card-body items-center">
-                                    <h2 className="card-title">''{review.reviewer_name}''</h2>
-                                    <p>{review.review_description}</p>
-                                    <p className="flex items-center gap-4"><FaMapLocation /> {review.property_title}</p>
-                                    {/* <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">Watch</button>
-                                    </div> */}
+                                    <h2 className="card-title">''{review.reviewerName}''</h2>
+                                    <p>{review.review}</p>
+                                    <p className="flex items-center gap-4"><FaMapLocation /> {review?.property_title}</p>
+
                                 </div>
                             </div>
                         </div>

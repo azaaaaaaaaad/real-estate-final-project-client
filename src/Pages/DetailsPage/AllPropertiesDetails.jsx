@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
@@ -62,7 +62,7 @@ const AllPropertiesDetails = () => {
                 <div className="card-body">
                     <h2 className="card-title">{properties?.title}</h2>
                     <p>{properties?.description}</p>
-                    <p>Price Range: {properties?.price_range}</p>
+                    <p>Price Range: ${properties?.priceMin} - ${properties?.priceMax}</p>
                     <p className='flex items-center gap-2'><FaRegUser />Agent: {properties?.agent?.name}</p>
                     <div className="card-actions justify-center">
 
@@ -72,9 +72,17 @@ const AllPropertiesDetails = () => {
                             Add to wishlist
                         </button>
 
+                        <Link to={`/add-review/${id}`}>
+                            <button
+                                // onClick={() => handleAddToWishlist(properties)}
+                                className="btn btn-secondary btn-wide">
+                                Add a Review
+                            </button>
+                        </Link>
+
                     </div>
 
-                    
+
                 </div>
             </div>
         </div>

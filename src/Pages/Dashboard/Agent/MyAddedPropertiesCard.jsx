@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaMapLocationDot, FaUser } from "react-icons/fa6";
 import DeleteModal from "../../../components/Modal/DeleteModal";
+import { Link } from "react-router-dom";
 
 
 const MyAddedPropertiesCard = ({ property, handleDelete }) => {
@@ -24,7 +25,7 @@ const MyAddedPropertiesCard = ({ property, handleDelete }) => {
                     <button className="btn btn-primary">Watch</button>
                 </div> */}
                 <div className="join join-vertical lg:join-horizontal">
-                    <button className="btn join-item bg-green-500">Update</button>
+                    <Link to={`/update-properties/${property._id}`}><button className="btn join-item bg-green-500">Update</button></Link>
                     <button onClick={()=> setIsOpen(true)} className="btn join-item bg-red-500">Delete</button>
                     <DeleteModal isOpen={isOpen} closeModal={closeModal} handleDelete={handleDelete} id={property._id}></DeleteModal>
                 </div>

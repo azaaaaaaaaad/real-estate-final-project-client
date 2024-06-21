@@ -25,6 +25,8 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PropertyBought from "../Pages/Dashboard/User/PropertyBought";
 import MyReviews from "./MyReviews";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
+import UpdateProperties from "../Pages/Dashboard/Agent/UpdateProperties";
+import AddReview from "../Pages/DetailsPage/AddReview";
 
 
 
@@ -45,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path: '/advertisement/:id',
                 element: <PrivateRoute><AdvertisementDetails></AdvertisementDetails></PrivateRoute>,
+            },
+            {
+                path: '/add-review/:id',
+                element: <PrivateRoute><AddReview></AddReview></PrivateRoute>,
             },
             {
                 path: '/allProperties/:id',
@@ -127,6 +133,15 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <AgentRoute>
                             <RequestedProperties></RequestedProperties>
+                        </AgentRoute>
+                    </PrivateRoute>
+            },
+            {
+                 path: 'update-properties/:id',
+                 element: 
+                 <PrivateRoute>
+                        <AgentRoute>
+                            <UpdateProperties></UpdateProperties>
                         </AgentRoute>
                     </PrivateRoute>
             },
