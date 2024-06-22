@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
@@ -138,7 +138,7 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
-                 path: 'dashboard/update-properties/:id',
+                 path: 'update-properties/:id',
                  element: 
                  <PrivateRoute>
                         <AgentRoute>
