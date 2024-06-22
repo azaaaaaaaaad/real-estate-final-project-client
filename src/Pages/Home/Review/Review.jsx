@@ -38,9 +38,9 @@ const Review = () => {
                             <div className="card bg-base-100">
                                 <figure><img className='rounded-xl w-20 h-20' src={review.image} alt="Movie" /></figure>
                                 <div className="card-body items-center">
-                                    <h2 className="card-title">''{review.reviewerName}''</h2>
+                                    <h2 className="card-title">''{review.name}''</h2>
                                     <p>{review.review}</p>
-                                    <p className="flex items-center gap-4"><FaMapLocation /> {review?.property_title}</p>
+                                    <p className="flex items-center gap-4"><FaMapLocation /> {review?.propertyTitle}</p>
 
                                 </div>
                             </div>

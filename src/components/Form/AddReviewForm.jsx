@@ -9,13 +9,13 @@ const AddReviewForm = ({ handleSubmit, setImagePreview, imagePreview, handleImag
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
                     <div className='space-y-6'>
                         <div className='space-y-1 text-sm'>
-                            <label htmlFor='reviewerName' className='block text-gray-600'>
+                            <label htmlFor='name' className='block text-gray-600'>
                                 Reviewer name
                             </label>
                             <input
                                 className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-700 rounded-md '
-                                name='reviewerName'
-                                id='reviewerName'
+                                name='name'
+                                id='name'
                                 type='text'
                                 defaultValue={user?.displayName}
                                 readOnly
@@ -25,14 +25,14 @@ const AddReviewForm = ({ handleSubmit, setImagePreview, imagePreview, handleImag
                     </div>
                     <div className='space-y-6'>
                         <div className='space-y-1 text-sm'>
-                            <label htmlFor='reviewerEmail' className='block text-gray-600'>
+                            <label htmlFor='email' className='block text-gray-600'>
                                 Reviewer email
                             </label>
                             <input
                                 className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-700 rounded-md '
-                                name='reviewerEmail'
-                                id='reviewerEmail'
-                                type='text'
+                                name='email'
+                                id='email'
+                                type='email'
                                 defaultValue={user?.email}
                                 readOnly
                                 required

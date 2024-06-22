@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../Pages/Hooks/useAuth";
-import useAxiosSecure from "../Pages/Hooks/useAxiosSecure";
-import { MdDelete } from "react-icons/md";
+import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { MdDelete } from "react-icons/md";
 
-
-const MyReviews = () => {
+const ManageReviews = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
     const { data: reviews = [], refetch } = useQuery({
@@ -66,7 +65,7 @@ const MyReviews = () => {
                                             className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
                                             <div className='flex items-center gap-x-3'>
-                                                <span>Property Title</span>
+                                                <span>Reviewer Image</span>
                                             </div>
                                         </th>
                                         <th
@@ -74,7 +73,7 @@ const MyReviews = () => {
                                             className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
                                             <div className='flex items-center gap-x-3'>
-                                                <span> Agent Name</span>
+                                                <span> Reviewer Email</span>
                                             </div>
                                         </th>
                                         <th
@@ -82,7 +81,15 @@ const MyReviews = () => {
                                             className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
                                             <div className='flex items-center gap-x-3'>
-                                                <span>Review Description</span>
+                                                <span>Reviewer Name</span>
+                                            </div>
+                                        </th>
+                                        <th
+                                            scope='col'
+                                            className='py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500'
+                                        >
+                                            <div className='flex items-center gap-x-3'>
+                                                <span>Review</span>
                                             </div>
                                         </th>
 
@@ -95,10 +102,13 @@ const MyReviews = () => {
                                     {reviews.map(reviews => (
                                         <tr key={reviews._id}>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {reviews.propertyTitle}
+                                                <img src={reviews.reviewerImage} alt="" />
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
-                                                {reviews.agent}
+                                                {reviews.email}
+                                            </td>
+                                            <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
+                                                {reviews.name}
                                             </td>
                                             <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
                                                 {reviews.review}
@@ -115,7 +125,7 @@ const MyReviews = () => {
                                                         disabled={reviews.status === 'accepted'}
                                                         className='disabled:cursor-not-allowed text-gray-500 transition-colors duration-200   hover:text-red-500 focus:outline-none'
                                                     >
-                                                        <MdDelete  className="text-2xl"/>
+                                                        <MdDelete className="text-2xl" />
                                                     </button>
 
                                                 </div>
@@ -132,4 +142,4 @@ const MyReviews = () => {
     );
 };
 
-export default MyReviews;
+export default ManageReviews;

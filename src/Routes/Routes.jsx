@@ -27,6 +27,7 @@ import MyReviews from "./MyReviews";
 import ManageProperties from "../Pages/Dashboard/Admin/ManageProperties";
 import UpdateProperties from "../Pages/Dashboard/Agent/UpdateProperties";
 import AddReview from "../Pages/DetailsPage/AddReview";
+import ManageReviews from "../Pages/Dashboard/Admin/ManageReviews";
 
 
 
@@ -137,7 +138,7 @@ export const router = createBrowserRouter([
                     </PrivateRoute>
             },
             {
-                 path: 'update-properties/:id',
+                 path: 'dashboard/update-properties/:id',
                  element: 
                  <PrivateRoute>
                         <AgentRoute>
@@ -161,6 +162,15 @@ export const router = createBrowserRouter([
                     <PrivateRoute>
                         <AdminRoute>
                             <ManageProperties></ManageProperties>
+                        </AdminRoute>
+                    </PrivateRoute>
+            },
+            {
+                path: 'manage-reviews',
+                element:
+                    <PrivateRoute>
+                        <AdminRoute>
+                            <ManageReviews></ManageReviews>
                         </AdminRoute>
                     </PrivateRoute>
             },
