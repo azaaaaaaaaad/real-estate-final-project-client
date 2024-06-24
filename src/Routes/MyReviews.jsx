@@ -8,15 +8,28 @@ import Swal from "sweetalert2";
 const MyReviews = () => {
     const { user } = useAuth()
     const axiosSecure = useAxiosSecure()
+
+    // const { data: reviews = [], refetch } = useQuery({
+    //     queryKey: ['reviews'],
+    //     queryFn: async () => {
+    //         // const res = await axiosSecure.get(`/reviews?email=${user?.email}`)
+    //         const res = await axiosSecure.get(`/reviews`)
+    //         return res.data
+    //     }
+    // })
+    // console.log(reviews);
+
     const { data: reviews = [], refetch } = useQuery({
-        queryKey: ['reviews'],
+        queryKey: ['reviews', user?.email],
         queryFn: async () => {
-            // const res = await axiosSecure.get(`/reviews?email=${user?.email}`)
-            const res = await axiosSecure.get(`/reviews`)
-            return res.data
-        }
+            const { data } = await axiosSecure.get(`/reviews/${user?.email}`)
+
+            return data
+        },
     })
+
     console.log(reviews);
+
 
 
     const handleDelete = id => {

@@ -1,7 +1,8 @@
 import { FaMapLocation, FaUser } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
-const PropertyBoughtCard = ({property}) => {
+const PropertyBoughtCard = ({ property }) => {
     return (
         <div>
             <div className="card lg:card-side bg-base-100 shadow-xl">
@@ -15,21 +16,19 @@ const PropertyBoughtCard = ({property}) => {
                     </div>
                     <p>Status:  {property?.status}</p>
                     <p>Offered Amount: ${property?.offerAmount}</p>
-                    {/* <div className="card-actions justify-end join join-vertical lg:join-horizontal">
-                        <Link 
-                        to={`/make-an-offer/${property._id}`}
-                        property={property}>
+                    {property.status === 'accepted' ?
+                        <Link to={`/payment/${property._id}`}>
                             <button
-                                className="btn btn-primary">
-                                Make an Offer
+                                className="btn btn-primary w-full">
+                                Pay
                             </button>
-                        </Link>
+                        </Link> :
                         <button
-                            onClick={() => handleDelete(property?._id)}
-                            className="btn btn-primary">
-                            Remove
+                            disabled
+                            className="btn btn-primary w-full">
+                            Pay
                         </button>
-                    </div> */}
+                    }
                 </div>
             </div>
         </div>

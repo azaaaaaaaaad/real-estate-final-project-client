@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute><MakeAnOffer></MakeAnOffer></PrivateRoute>
             },
             {
-                path: `/payment`,
+                path: `/payment/:id`,
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>
             },
 

@@ -13,7 +13,7 @@ const AllPropertiesDetails = () => {
     const axiosSecure = useAxiosSecure()
     const [properties, setProperties] = useState([])
     useEffect(() => {
-        fetch(`https://real-state-server-nine.vercel.app/allProperties/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/allProperties/${id}`)
             .then(res => res.json())
             .then(data => {
                 // const verified = data.filter(item => item.verification_status === 'Verified')

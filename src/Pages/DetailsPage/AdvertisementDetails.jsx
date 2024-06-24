@@ -12,7 +12,7 @@ const AdvertisementDetails = () => {
     const [properties, setProperties] = useState([])
     const axiosSecure = useAxiosSecure()
     useEffect(() => {
-        fetch(`https://real-state-server-nine.vercel.app/advertisement/${id}`)
+        fetch(`${import.meta.env.VITE_API_URL}/advertisement/${id}`)
             .then(res => res.json())
             .then(data => {
                 // // const verifiedItems = data.filter(item => item.verification_status === 'verified')

@@ -19,7 +19,7 @@ const Review = () => {
 
 
     useEffect(() => {
-        fetch(`https://real-state-server-nine.vercel.app/reviews`)
+        fetch(`${import.meta.env.VITE_API_URL}/reviews`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
