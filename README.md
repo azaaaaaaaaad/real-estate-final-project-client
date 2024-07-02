@@ -28,8 +28,8 @@ To clone and run this project locally, follow these steps:
 - **Clone the repository**:
   git clone https://github.com/azaaaaaaaaad/real-estate-final-project-client.git
 
-- **Clone the repository**:
-   Navigate to project directory: cd real-estate-final-project-client
+- **Navigate to project directory**:
+   cd real-estate-final-project-client
    
 - **Install dependencies**:
    npm install
